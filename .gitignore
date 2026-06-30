@@ -1,3 +1,11 @@
+aea_2026_projections/
+cbo_selenium_profile_fresh/
+*.pdf
+*.xlxs
+*.csv
+*.parquet
+*.htm
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
