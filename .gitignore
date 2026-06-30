@@ -5,6 +5,7 @@ cbo_selenium_profile_fresh/
 *.csv
 *.parquet
 *.htm
+*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
