@@ -6,6 +6,8 @@ cbo_selenium_profile_fresh/
 *.htm
 *.json
 
+!data_files/Loughran-McDonald_MasterDictionary_1993-2025.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
