@@ -1,7 +1,6 @@
 aea_2026_projections/
 cbo_selenium_profile_fresh/
-*.pdf
-*.xlxs
+*.zip
 *.csv
 *.parquet
 *.htm
