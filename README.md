@@ -23,7 +23,7 @@ Install dependencies with:
 pip install -r requirements.txt
 ```
 
-Main dependencies include `pandas`, `numpy`, `PyMuPDF`, `pyarrow`, `scikit-learn`, `nltk`, `gensim`, `matplotlib`, `seaborn`, and `scipy`.
+Main dependencies include `pandas`, `numpy`, `scipy`, `PyMuPDF`, `matplotlib`, `seaborn`, and `gensim`.
 
 If using Word2Vec-related functionality, download the relevant model files separately. Large model files should not be committed to the repo.
 
@@ -39,7 +39,7 @@ Run the notebooks in order.
 
 ### 1. `01_chunk_paragraphs.ipynb`
 
-Extracts text from the CBO PDFs and chunks it into paragraph-level rows.
+This notebook preprocesses raw Congressional Budget Office (CBO) report PDFs from 2000 to 2026. It transforms unstructured PDF text blocks into a clean, tabular dataset for text analysis.
 
 Main output:
 
