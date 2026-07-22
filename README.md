@@ -27,11 +27,32 @@ Main dependencies include `pandas`, `numpy`, `scipy`, `PyMuPDF`, `matplotlib`, `
 
 If using Word2Vec-related functionality, download the relevant model files separately. Large model files should not be committed to the repo.
 
+### Quickstart
+
+```bash
+# 1. Clone the repository
+git clone [https://github.com/your-username/projection-uncertainty.git](https://github.com/your-username/projection-uncertainty.git)
+cd projection-uncertainty
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Launch Jupyter and run notebooks 01 through 04 in order
+jupyter lab
+```
+
 ## Input data
 
 - CBO *Budget and Economic Outlook* PDFs are included in the repo. Original source: [CBO Major Recurring Reports](https://www.cbo.gov/about/products/major-recurring-reports#1).
 - Projection error data are pulled from CBO’s [`outlay_projection_errors.csv`](https://raw.githubusercontent.com/US-CBO/eval-projections/main/output_data/outlay_projection_errors.csv).
 - Uncertainty terms are based partly on the [Loughran-McDonald Master Dictionary](https://sraf.nd.edu/loughranmcdonald-master-dictionary/) plus additional context words.
+
+### Intermediate Data Outputs
+| Notebook | Key Output Files Created |
+| :--- | :--- |
+| `01` | `data_files/chunked_paragraphs.csv` |
+| `02` | `data_files/subcategory_synonyms_word2vec.json`<br>`data_files/chunked_paragraphs_with_embeddings.csv` |
+| `03` | `data_files/chunked_paragraphs_with_embeddings_uncert.csv` |
 
 ## Run order
 
@@ -53,11 +74,26 @@ This notebook uses cleaned text paragraphs from 'chunked_paragraphs.csv' and mat
 
 Current approach: Creates a phrase dictionary consisting of exact matches (e.g. "Social Security") along with related words for each subcategory in the context of government spending. Then, search each paragraph for those phrase and matches it with the corresponding subcategory. 
 
+> **Note on Models:** `02_text_to_subcategory_mapping.ipynb` automatically downloads the pre-trained `word2vec-google-news-300` vector model via `gensim` on its initial run (~1.6 GB). Ensure you have a stable internet connection and sufficient disk space.
+
+> Main output:
+
+```text
+data_files/subcategory_synonyms_word2vec.json
+data_files/chunked_paragraphs_with_embeddings.csv
+```
+
 ### 3. `03_text_findict_uncertainty_scoring.ipynb`
 
 This notebook calculates uncertainty scores using finance/economic uncertainty terms.
 
 Current approach: Uses the LM dictionary plus additional context words to generate uncertainty-related synonyms. Projection errors are converted to absolute values before the main correlation analysis.
+
+> Main output:
+
+```text
+data_files/chunked_paragraphs_with_embeddings_uncert.csv
+```
 
 ### 4. `04_Error_Corr.ipynb`
 
