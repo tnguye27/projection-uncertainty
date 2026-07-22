@@ -2,13 +2,13 @@
 
 ## Overview
 
-This repo extracts paragraph-level text from CBO *Budget and Economic Outlook* reports, matches paragraphs to CBO outlay subcategories, calculates text-based uncertainty scores, and compares those scores to CBO outlay projection errors.
+This repo extracts paragraph-level text from CBO *Budget and Economic Outlook* reports, matches paragraphs to CBO outlay subcategories, calculates textual uncertainty scores, and compares those scores to CBO outlay projection errors.
 
 The workflow uses four notebooks:
 
 1. `01_chunk_paragraphs.ipynb`
-2. `02_match_projection_errors.ipynb`
-3. `03_FinDict.ipynb`
+2. `02_text_to_subcategory_mapping.ipynb`
+3. `03_text_findict_uncertainty_scoring.ipynb`
 4. `04_Error_Corr.ipynb`
 
 CBO report PDFs are included directly in the repo, so the old scraper is no longer needed.
@@ -47,21 +47,21 @@ Main output:
 data_files/chunked_paragraphs.csv
 ```
 
-### 2. `02_match_projection_errors.ipynb`
+### 2. `02_text_to_subcategory_mapping.ipynb`
 
-Matches paragraph text to CBO outlay subcategories and merges in projection error data.
+This notebook uses cleaned text paragraphs from 'chunked_paragraphs.csv' and matches each paragraph with outlay subcategories, such as Social Security or Medicare. 
 
-Current approach: uses exact matches for matching text with subcategories and no longer uses Word2Vec synonyms for this step.
+Current approach: Creates a phrase dictionary consisting of exact matches (e.g. "Social Security") along with related words for each subcategory in the context of government spending. Then, search each paragraph for those phrase and matches it with the corresponding subcategory. 
 
-### 3. `03_FinDict.ipynb`
+### 3. `03_text_findict_uncertainty_scoring.ipynb`
 
-Calculates uncertainty scores using finance/economic uncertainty terms.
+This notebook calculates uncertainty scores using finance/economic uncertainty terms.
 
-Current approach: uses the LM dictionary plus additional context words to generate uncertainty-related synonyms. Projection errors are converted to absolute values before the main correlation analysis.
+Current approach: Uses the LM dictionary plus additional context words to generate uncertainty-related synonyms. Projection errors are converted to absolute values before the main correlation analysis.
 
 ### 4. `04_Error_Corr.ipynb`
 
-Produces the main figures and correlation analysis comparing text-based uncertainty scores with projection errors.
+This notebook calculates correlation between textual uncertainty scores with projection errors and produces main figures.
 
 Main figures:
 
