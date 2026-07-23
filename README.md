@@ -110,6 +110,9 @@ Notes on selected programs:
 - **Net interest:** Similar pattern, with high uncertainty earlier in the sample around the dot-com bubble and financial crisis, though this interpretation is less certain.
 - **Medicare:** Appears to reflect the spending slowdown around 2015, which was known and discussed at the time.
 
+## Figure Analysis
+This figure shows the relationship between text uncertainty in CBO reports, measured as the normalized percentage of uncertainty terms, and mean absolute projection error across target years. Across Medicaid, Medicare, and Net Interest, expressed text uncertainty fluctuates within a narrow 2–3% range, whereas projection errors show severe spikes that expand over longer 6- and 9-year horizons. This disconnect peaked post-2020, as actual errors reached historic highs without corresponding rises in report uncertainty, perhaps due to the Covid-19 pandemic. Medicaid 3-year text uncertainty peaked near 4.0% around 2012, perhaps driven by the 2010 Affordable Care Act, while errors remained low, whereas post-2020 text uncertainty fell to ~1.0% despite pandemic policy and enrollment surges driving errors past $100 billion.
+
 ## Notes
 
 Run notebooks in order, since later notebooks depend on earlier outputs. If re-running with changed settings, delete or overwrite prior outputs in `data_files/` to avoid confusion. Large external model files, such as Word2Vec vectors, should be downloaded separately and not committed to the repo.
