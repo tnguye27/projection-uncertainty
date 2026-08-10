@@ -74,6 +74,8 @@ This notebook uses cleaned text paragraphs from 'chunked_paragraphs.csv' and mat
 
 Current approach: Creates a phrase dictionary consisting of exact matches (e.g. "Social Security") along with related words for each subcategory in the context of government spending. Then, search each paragraph for those phrase and matches it with the corresponding subcategory. 
 
+Matching subcategories: Focused on the 10 specific subcategories since they are the baseline projections subcategories used in CBO reports. 
+
 > **Note on Models:** `02_text_to_subcategory_mapping.ipynb` automatically downloads the pre-trained `word2vec-google-news-300` vector model via `gensim` on its initial run (~1.6 GB). Ensure you have a stable internet connection and sufficient disk space.
 
 > Main output:
@@ -98,6 +100,9 @@ data_files/chunked_paragraphs_with_embeddings_uncert.csv
 ### 4. `04_Error_Corr.ipynb`
 
 This notebook calculates correlation between textual uncertainty scores with projection errors and produces main figures.
+
+Hypothesis: 
+I would expect there to be a relationship between textual uncertainty and forecast errors because CBO reports reflect the current and pending legislation by assuming it will happen. Thus, if a legislation doesn't happen, our projection would be off, causing high projection errors. Also, as the projection horizon increases, the projection errors would also increase.
 
 Main figures:
 
