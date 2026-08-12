@@ -121,3 +121,6 @@ This figure shows the relationship between text uncertainty in CBO reports, meas
 ## Notes
 
 Run notebooks in order, since later notebooks depend on earlier outputs. If re-running with changed settings, delete or overwrite prior outputs in `data_files/` to avoid confusion. Large external model files, such as Word2Vec vectors, should be downloaded separately and not committed to the repo.
+
+## Update
+1. After excluding data during and post-pandemic years, Medicaid results show not statistically significant.
